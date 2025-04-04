@@ -1,12 +1,12 @@
-# Django: Part 1
+# Learn Django: Make a Simple Website (Easy Guide for Beginners)
 
-This guide explains how to start a website using **Django**, a tool that helps build websites with **Python**.
+This guide explains how to start a website using **Django**, a tool that helps build websites with **Python**. It is written in simple words for beginners around grade 6 level.
 
 This guide covers:
-1. ([Starting a new Django project 📁](#step-1-start-a-django-project))
-2. Running a test website on a computer 🌐
-3. Understanding important files 🧾
-4. Trying small changes and testing them 🧪
+1. [Starting a new Django project 📁](#step-1-start-a-django-project)
+2. [Running a test website on a computer 🌐](#step-2-run-the-website)
+3. [Understanding important files 🧾](#step-1-start-a-django-project)
+4. [Trying small changes and testing them 🧪](#step-3-server-and-port-options)
 
 The example is a basic poll site that lets people vote on simple questions like *"What's your favorite fruit?"* 🍎🍌🍇
 
@@ -33,6 +33,7 @@ Requirements:
 ---
 
 ## 🚀 Step 1: Start a Django Project
+### [Go to Step 1](#step-1-start-a-django-project)
 
 In the terminal, run:
 ```bash
@@ -106,10 +107,10 @@ python manage.py runserver 0:8000
 
 ## ✅ What’s Next?
 After this basic setup:
-- Add an app (a section of the site, like a poll or blog).
-- Add a database to save information.
-- Create simple pages.
-- Use Django admin to manage content.
+- [Add an app (a section of the site, like a poll or blog).](#step-1-start-a-django-project)
+- [Add a database to save information.](#step-3-server-and-port-options)
+- [Create simple pages.](#step-1-start-a-django-project)
+- [Use Django admin to manage content.](#step-1-start-a-django-project)
 
 ---
 
@@ -122,4 +123,3 @@ After this basic setup:
 | **Terminal** | Place to type computer commands |
 | **Server** | Program that runs the website |
 | **manage.py** | File used to control the website from the terminal |
-
