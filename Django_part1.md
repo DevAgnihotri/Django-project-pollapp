@@ -33,7 +33,6 @@ Requirements:
 ---
 
 ## 🚀 Step 1: Start a Django Project
-### [Go to Step 1](#step-1-start-a-django-project)
 
 In the terminal, run:
 ```bash
@@ -113,6 +112,9 @@ After this basic setup:
 - [Use Django admin to manage content.](#step-1-start-a-django-project)
 
 ---
+
+### [Go to Step 1](#step-1-start-a-django-project)
+
 
 ## 🧠 Quick Terms to Remember
 | Term | What It Means |
