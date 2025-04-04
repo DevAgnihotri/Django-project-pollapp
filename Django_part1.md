@@ -3,7 +3,7 @@
 This guide explains how to start a website using **Django**, a tool that helps build websites with **Python**.
 
 This guide covers:
-1. Starting a new Django project 📁 ([Go to Step 1](#step-1-start-a-django-project))
+1. ([Starting a new Django project 📁](#step-1-start-a-django-projec))
 2. Running a test website on a computer 🌐
 3. Understanding important files 🧾
 4. Trying small changes and testing them 🧪
