@@ -383,4 +383,4 @@ This way Django knows you're referring to the `polls` app.
 - Avoided hardcoded URLs using `{% url %}`
 - Made URL patterns robust with **namespacing**
 
-➡️ Up next: Learn how to handle forms and use Django’s generic views in Part 4!
+➡️ Up next: Learn how to handle forms and use Django’s generic views NEXT!
