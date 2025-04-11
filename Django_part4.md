@@ -266,16 +266,9 @@ In this part, we:
 - Simplified our views using `render()` and `get_object_or_404()`
 - Learned what `render()` does and why it's essential for clean, efficient views
 
-# Using the Template System
-
-### ✅ Steps Completed:
-
-- Used Django’s **template system** to render dynamic content
-- Created a `detail.html` template to display question and its choices
-- Replaced hardcoded URLs in templates with `{% url %}` tag
-- Introduced the concept of **namespacing URL names**
-
 ---
+
+# Using the Template System
 
 ## 🧾 Use the Template System
 
