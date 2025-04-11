@@ -11,6 +11,13 @@
 - Introduced and explained `render()` as a shortcut and its importance
 - Used `get_object_or_404()` instead of try/except for better error handling
 
+##### Using the Template System
+
+- Used Django’s **template system** to render dynamic content
+- Created a `detail.html` template to display question and its choices
+- Replaced hardcoded URLs in templates with `{% url %}` tag
+- Introduced the concept of **namespacing URL names**
+
 ---
 
 ## 🔹 What is a View?
@@ -259,4 +266,130 @@ In this part, we:
 - Simplified our views using `render()` and `get_object_or_404()`
 - Learned what `render()` does and why it's essential for clean, efficient views
 
-➡️ Up next: Templates for result and vote views + adding forms and handling submissions.
+# Using the Template System
+
+### ✅ Steps Completed:
+
+- Used Django’s **template system** to render dynamic content
+- Created a `detail.html` template to display question and its choices
+- Replaced hardcoded URLs in templates with `{% url %}` tag
+- Introduced the concept of **namespacing URL names**
+
+---
+
+## 🧾 Use the Template System
+
+Let’s go back to the `detail()` view in our polls app. Given the context variable `question`, the `polls/detail.html` template might look like:
+
+📄 **polls/templates/polls/detail.html**
+
+```html
+<h1>{{ question.question_text }}</h1>
+<ul>
+  {% for choice in question.choice_set.all %}
+  <li>{{ choice.choice_text }}</li>
+  {% endfor %}
+</ul>
+```
+
+### 🧠 How It Works:
+
+- `{{ question.question_text }}` uses **dot-lookup syntax**:
+
+  - Django first tries a dictionary lookup → fails
+  - Then it tries attribute lookup → succeeds ✅
+  - If that fails too, it tries list-index lookup
+
+- In `{% for %}` loop, `question.choice_set.all` is interpreted as a method call → returns an iterable of `Choice` objects
+
+🔗 Refer to the official template guide for more.
+
+---
+
+## 🔗 Removing Hardcoded URLs
+
+Originally, we had this in `polls/index.html`:
+
+```html
+<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+```
+
+📛 **Issue**: This is hardcoded. If URL changes, templates break. Not scalable.
+
+✅ Better Approach: Use `{% url %}` template tag
+
+```html
+<li>
+  <a href="{% url 'detail' question.id %}">{{ question.question_text }}</a>
+</li>
+```
+
+🔍 Django uses the `name` argument from `path()` in `polls/urls.py`:
+
+```python
+path("<int:question_id>/", views.detail, name="detail")
+```
+
+### 🛠️ Changing the Path
+
+To switch to a new path format like `polls/specifics/12/`, just change `urls.py`:
+
+```python
+path("specifics/<int:question_id>/", views.detail, name="detail")
+```
+
+No template change needed! 🧠
+
+---
+
+## 🧩 Namespacing URL Names
+
+In real-world projects with many apps, multiple apps may have views with the same name (e.g., `detail`). How does Django differentiate them?
+
+🧪 **Solution**: Add **namespace** using `app_name` in `polls/urls.py`:
+
+```python
+from django.urls import path
+from . import views
+
+app_name = "polls"
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("<int:question_id>/", views.detail, name="detail"),
+    path("<int:question_id>/results/", views.results, name="results"),
+    path("<int:question_id>/vote/", views.vote, name="vote"),
+]
+```
+
+### ✅ Updated Template:
+
+Change this:
+
+```html
+<li>
+  <a href="{% url 'detail' question.id %}">{{ question.question_text }}</a>
+</li>
+```
+
+To this:
+
+```html
+<li>
+  <a href="{% url 'polls:detail' question.id %}"
+    >{{ question.question_text }}</a
+  >
+</li>
+```
+
+This way Django knows you're referring to the `polls` app.
+
+---
+
+## ✅ Summary
+
+- Created and used Django templates to dynamically render question details and choices
+- Avoided hardcoded URLs using `{% url %}`
+- Made URL patterns robust with **namespacing**
+
+➡️ Up next: Learn how to handle forms and use Django’s generic views in Part 4!
