@@ -89,6 +89,8 @@ Use the credentials you created in Step 1 to log in.
 
 ### 🧾 What you'll see:
 
+![Alt text](https://docs.djangoproject.com/en/4.2/_images/admin02.png)
+
 - **Login page** – Enter your username and password.
 - **Admin dashboard** – After logging in, you'll see an index page listing the available models.
 - By default, you’ll see:
@@ -129,6 +131,8 @@ admin.site.register(Question)
 
 Once your model is registered, refresh the admin page. You’ll now see the `Question` model listed.
 
+![Alt text](https://docs.djangoproject.com/en/4.2/_images/admin03t.png)
+
 ### 📋 On clicking "Questions", you'll see:
 
 - A list of all `Question` objects in the database.
@@ -137,7 +141,11 @@ Once your model is registered, refresh the admin page. You’ll now see the `Que
   - **Add new ones**
   - **Delete entries**
 
+![Alt text](https://docs.djangoproject.com/en/4.2/_images/admin04t.png)
+
 ### ✍️ Editing a Question:
+
+![Alt text](https://docs.djangoproject.com/en/4.2/_images/admin05t.png)
 
 - The form is auto-generated based on the `Question` model.
 - Field types like `DateTimeField` and `CharField` render as appropriate input fields.
@@ -151,6 +159,8 @@ Once your model is registered, refresh the admin page. You’ll now see the `Que
 - **Save and continue editing** – Saves and stays on the page
 - **Save and add another** – Saves and opens a new blank form
 - **Delete** – Deletes the record with confirmation
+
+![Alt text](https://docs.djangoproject.com/en/4.2/_images/admin06t.png)
 
 ### 🕓 Viewing History:
 
