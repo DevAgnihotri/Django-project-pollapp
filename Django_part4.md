@@ -268,8 +268,6 @@ In this part, we:
 
 ---
 
-# Using the Template System
-
 ## 🧾 Use the Template System
 
 Let’s go back to the `detail()` view in our polls app. Given the context variable `question`, the `polls/detail.html` template might look like:
