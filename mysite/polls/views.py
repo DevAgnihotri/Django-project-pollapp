@@ -1,50 +1,29 @@
-from django.shortcuts import render
-from django.http import Http404
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views import generic
 
-from . models import Question, Choice
+from .models import Question, Choice
 
 
-def index(request):
-    latest_question_list = Question.objects.order_by("-pub_date")[:5]
-    context = {"latest_question_list": latest_question_list}
-    return render(request, "polls/index.html", context)
+class IndexView(generic.ListView):
+    template_name = "polls/index.html"
+    context_object_name = "latest_question_list"
 
-def detail(request, question_id):
-    """
-    Handle the detail view for a specific question.
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by("-pub_date")[:5]
 
-    This view attempts to retrieve a `Question` object from the database
-    using the provided `question_id`. If the `Question` does not exist,
-    it raises an `Http404` exception. If the `Question` is found, it renders
-    the "polls/detail.html" template with the `question` object passed as context.
 
-    Args:
-        request (HttpRequest): The HTTP request object.
-        question_id (int): The ID of the question to retrieve.
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = "polls/detail.html"
 
-    Returns:
-        HttpResponse: The rendered detail page for the question.
 
-    Raises:
-        Http404: If the `Question` with the given `question_id` does not exist.
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = "polls/results.html"
 
-    Note:
-        - `pk` stands for "primary key", which is a unique identifier for a record in the database.
-    """
-    try:
-        question = Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404("Question does not exist")
-    #   Or simply just
-    #   question = get_object_or_404(Question, pk=question_id)
-    return render(request, "polls/detail.html", {"question": question})
-
-def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, "polls/results.html", {"question": question})
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
